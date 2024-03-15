@@ -1,4 +1,4 @@
-# Project name
+# PHP base image
 
 [![GitHub contributors][ico-contributors]][link-contributors]
 [![GitHub last commit][ico-last-commit]][link-last-commit]
