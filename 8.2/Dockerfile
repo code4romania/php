@@ -14,9 +14,6 @@ ENV COMPOSER_CACHE_DIR /dev/null
 COPY --from=mlocati/php-extension-installer:2 /usr/bin/install-php-extensions /usr/local/bin/install-php-extensions
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
-RUN set -ex; \
-    apk update;
-
 # production dependencies
 RUN set -ex; \
     apk add --no-cache \
@@ -42,9 +39,12 @@ RUN set -ex; \
 
 ENTRYPOINT ["/init"]
 
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY php.ini /usr/local/etc/php/php.ini
-COPY www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY php.ini /usr/local/etc/php/conf.d/zz-custom.ini
+COPY www.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+
+WORKDIR /var/www
 
 # Sensible defaults for production
 ENV APP_ENV production
