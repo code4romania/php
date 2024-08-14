@@ -1,0 +1,17 @@
+#!/command/with-contenv sh
+
+echo "WORKER_ENABLED $WORKER_ENABLED"
+
+if test "$WORKER_ENABLED" -eq "true"; then
+    php /var/www/artisan queue:work \
+        --max-jobs $WORKER_MAX_JOBS \
+        --sleep $WORKER_SLEEP \
+        --rest $WORKER_REST \
+        --timeout $WORKER_TIMEOUT \
+        --tries $WORKER_TRIES \
+        --force
+else
+    echo "Worker is disabled"
+    s6-svc -Od .
+    exit 0
+fi
