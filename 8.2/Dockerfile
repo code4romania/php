@@ -41,11 +41,13 @@ RUN set -ex; \
 ENTRYPOINT ["/init"]
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
-COPY common/sh /etc/profile.d
 COPY common/s6-rc.d /etc/s6-overlay/s6-rc.d
 COPY common/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY 8.2/php.ini /usr/local/etc/php/conf.d/zz-custom.ini
 COPY 8.2/www.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+
+ENV ENV="/etc/profile"
+COPY common/aliases.sh /etc/profile.d/aliases.sh
 
 WORKDIR /var/www
 
