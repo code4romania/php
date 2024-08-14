@@ -41,6 +41,7 @@ RUN set -ex; \
 ENTRYPOINT ["/init"]
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+COPY common/sh /etc/profile.d
 COPY common/s6-rc.d /etc/s6-overlay/s6-rc.d
 COPY common/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY 8.2/php.ini /usr/local/etc/php/conf.d/zz-custom.ini
@@ -68,6 +69,12 @@ ENV WORKER_TIMEOUT=600
 
 # Number of times to attempt a job before logging it failed
 ENV WORKER_TRIES=3
+
+# determines what the container should do if one of the service scripts fails
+# 0: Continue silently even if a script has failed.
+# 1: Continue but warn with an annoying error message.ext script
+# 2: Stop the container.
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS 2
 
 ENV SENTRY_SAMPLE_RATE=0
 
