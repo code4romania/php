@@ -76,7 +76,7 @@ ENV WORKER_TRIES=3
 # 0: Continue silently even if a script has failed.
 # 1: Continue but warn with an annoying error message.ext script
 # 2: Stop the container.
-ENV S6_BEHAVIOUR_IF_STAGE2_FAILS 2
+ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 
 ENV SENTRY_SAMPLE_RATE=0
 
