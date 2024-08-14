@@ -1,13 +1,9 @@
 #!/command/with-contenv sh
 
-cd /var/www
+source /etc/profile.d/aliases.sh
 
-php artisan migrate --force
-php artisan optimize
-php artisan storage:link
+artisan migrate --force
+artisan optimize
+artisan storage:link
 
-if [ -f ./custom.sh ]; then
-    ./custom.sh
-fi
-
-php artisan about
+artisan about
