@@ -1,6 +1,7 @@
 FROM php:8.2-fpm-alpine
 
 ARG S6_OVERLAY_VERSION=3.2.0.0
+ARG PHP_EXTENSION_INSTALLER_VERSION=2.5.0
 
 ARG VERSION
 ARG REVISION
@@ -10,8 +11,11 @@ RUN echo "$VERSION (${REVISION:0:7})" > /var/www/.version
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_HOME=/tmp
 ENV COMPOSER_CACHE_DIR=/dev/null
+ENV COMPOSER_FUND=0
+ENV COMPOSER_NO_INTERACTION=1
+ENV COMPOSER_NO_DEV=1
 
-ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/download/2.5.0/install-php-extensions /usr/local/bin/install-php-extensions
+ADD --chmod=0755 https://github.com/mlocati/docker-php-extension-installer/releases/download/${PHP_EXTENSION_INSTALLER_VERSION}/install-php-extensions /usr/local/bin/install-php-extensions
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 # production dependencies
