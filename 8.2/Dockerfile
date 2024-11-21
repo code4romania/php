@@ -42,7 +42,7 @@ RUN set -ex; \
     tar -C / -Jxpf /tmp/s6-overlay-noarch.tar.xz; \
     tar -C / -Jxpf /tmp/s6-overlay-x86_64.tar.xz;
 
-ENTRYPOINT ["/init"]
+CMD ["/init"]
 
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 COPY common/s6-rc.d /etc/s6-overlay/s6-rc.d
