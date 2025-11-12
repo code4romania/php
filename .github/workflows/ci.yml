@@ -2,8 +2,6 @@ name: Build and push image to registry
 
 on:
   push:
-    branches:
-      - main
   schedule:
     - cron: "0 10 * * 1"
   workflow_dispatch:
@@ -50,4 +48,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           no-cache: true
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
