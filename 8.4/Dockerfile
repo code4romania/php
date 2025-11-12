@@ -40,6 +40,9 @@ ENV COMPOSER_HOME=/tmp
 ENV COMPOSER_NO_DEV=1
 ENV COMPOSER_NO_INTERACTION=1
 
+# App defaults
+ENV LOG_CHANNEL=stderr
+
 # Switch to root so we can do root things
 USER root
 
