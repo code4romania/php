@@ -48,4 +48,6 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           no-cache: true
+          provenance: mode=max
+          sbom: true
           push: ${{ github.ref == 'refs/heads/main' }}
