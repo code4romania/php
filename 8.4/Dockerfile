@@ -1,6 +1,7 @@
 FROM serversideup/php:8.4-fpm-nginx-alpine
 
-COPY --chmod=755 common/ /
+COPY --chmod=755 common/etc/entrypoint.d /etc/entrypoint.d
+COPY --chmod=644 --chown=www-data:www-data common/etc/nginx /etc/nginx
 
 # PHP limits
 ENV PHP_MEMORY_LIMIT=256M
@@ -57,10 +58,5 @@ RUN set -ex; \
 
 # Drop back to our unprivileged user
 USER www-data
-
-ARG VERSION
-ARG REVISION
-
-RUN echo "$VERSION (${REVISION:0:7})" > ${APP_BASE_DIR}/.version
 
 EXPOSE 8080 8443
