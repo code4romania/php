@@ -1,7 +1,7 @@
 FROM serversideup/php:8.4-fpm-nginx-alpine
 
 COPY --chmod=755 common/etc/entrypoint.d /etc/entrypoint.d
-COPY --chmod=644 --chown=www-data:www-data common/etc/nginx /etc/nginx
+COPY --chmod=755 --chown=www-data:www-data common/etc/nginx /etc/nginx
 
 # PHP limits
 ENV PHP_MEMORY_LIMIT=256M
