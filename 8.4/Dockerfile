@@ -1,4 +1,4 @@
-FROM serversideup/php:8.4-fpm-nginx-alpine
+FROM serversideup/php:beta-8.4-fpm-nginx-alpine
 
 COPY --chmod=755 common/etc/entrypoint.d /etc/entrypoint.d
 COPY --chmod=755 --chown=www-data:www-data common/etc/nginx /etc/nginx
@@ -25,10 +25,7 @@ ENV PHP_FPM_PM_MAX_SPARE_SERVERS=3
 ENV AUTORUN_ENABLED=true
 ENV AUTORUN_LARAVEL_MIGRATION=true
 ENV AUTORUN_LARAVEL_STORAGE_LINK=true
-ENV AUTORUN_LARAVEL_CONFIG_CACHE=true
-ENV AUTORUN_LARAVEL_EVENT_CACHE=true
-ENV AUTORUN_LARAVEL_ROUTE_CACHE=true
-ENV AUTORUN_LARAVEL_VIEW_CACHE=true
+ENV AUTORUN_LARAVEL_OPTIMIZE=true
 ENV AUTORUN_LARAVEL_FILAMENT=true
 
 ENV HEALTHCHECK_PATH=/up
