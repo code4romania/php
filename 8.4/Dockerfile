@@ -1,4 +1,6 @@
-FROM serversideup/php:beta-8.4-fpm-nginx-alpine
+# TODO: replace when stable is released
+# beta-8.4-fpm-nginx-alpine
+FROM serversideup/php@sha256:885f3ef31d193ee67e03863d50a349a0ce2c31cd74eb42c79f7a37e7a6918120
 
 COPY --chmod=755 common/etc/entrypoint.d /etc/entrypoint.d
 COPY --chmod=755 --chown=www-data:www-data common/etc/nginx /etc/nginx
