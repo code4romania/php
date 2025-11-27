@@ -1,0 +1,17 @@
+#!/command/with-contenv sh
+
+echo "QUEUE_ENABLED $QUEUE_ENABLED"
+
+if test "$QUEUE_ENABLED" -eq "true"; then
+    artisan queue:work \
+        --max-jobs $QUEUE_MAX_JOBS \
+        --sleep $QUEUE_SLEEP \
+        --rest $QUEUE_REST \
+        --timeout $QUEUE_TIMEOUT \
+        --tries $QUEUE_TRIES \
+        --force
+else
+    echo "Queue is disabled"
+    s6-svc -Od .
+    exit 0
+fi

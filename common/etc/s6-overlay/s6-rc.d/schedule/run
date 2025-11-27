@@ -1,0 +1,11 @@
+#!/command/with-contenv sh
+
+echo "SCHEDULE_ENABLED $SCHEDULE_ENABLED"
+
+if test "$SCHEDULE_ENABLED" -eq "true"; then
+    artisan schedule:work --whisper
+else
+    echo "Schedule is disabled"
+    s6-svc -Od .
+    exit 0
+fi

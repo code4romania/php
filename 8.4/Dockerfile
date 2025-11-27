@@ -41,6 +41,17 @@ ENV COMPOSER_NO_INTERACTION=1
 # App defaults
 ENV LOG_CHANNEL=stderr
 
+# Schedule settings
+ENV SCHEDULE_ENABLED=true
+
+# Queue settings
+ENV QUEUE_ENABLED=false
+ENV QUEUE_MAX_JOBS=50
+ENV QUEUE_SLEEP=30
+ENV QUEUE_REST=1
+ENV QUEUE_TIMEOUT=600
+ENV QUEUE_TRIES=3
+
 # Switch to root so we can do root things
 USER root
 
