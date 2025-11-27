@@ -2,7 +2,7 @@
 
 if [ "$QUEUE_ENABLED" = "true" ]; then
     echo "Queue is enabled"
-    artisan queue:work \
+    php "$APP_BASE_DIR/artisan" queue:work \
         --max-jobs $QUEUE_MAX_JOBS \
         --sleep $QUEUE_SLEEP \
         --rest $QUEUE_REST \

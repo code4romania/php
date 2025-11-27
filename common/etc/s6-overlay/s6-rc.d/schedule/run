@@ -2,7 +2,7 @@
 
 if [ "$SCHEDULE_ENABLED" = "true" ]; then
     echo "Schedule is enabled"
-    artisan schedule:work --whisper
+    php "$APP_BASE_DIR/artisan" schedule:work --whisper
 else
     echo "Schedule is disabled"
     s6-svc -Od .
