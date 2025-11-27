@@ -1,8 +1,7 @@
 #!/command/with-contenv sh
 
-echo "SCHEDULE_ENABLED $SCHEDULE_ENABLED"
-
-if test "$SCHEDULE_ENABLED" -eq "true"; then
+if [ "$SCHEDULE_ENABLED" = "true" ]; then
+    echo "Schedule is enabled"
     artisan schedule:work --whisper
 else
     echo "Schedule is disabled"
