@@ -1,6 +1,7 @@
 FROM serversideup/php:8.4-fpm-nginx-alpine
 
 COPY --chmod=755 common/etc/entrypoint.d /etc/entrypoint.d
+COPY --chmod=755 common/etc/s6-overlay /etc/s6-overlay
 COPY --chmod=755 --chown=www-data:www-data common/etc/nginx /etc/nginx
 
 # PHP limits
