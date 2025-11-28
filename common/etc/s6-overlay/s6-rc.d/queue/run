@@ -1,7 +1,7 @@
 #!/command/with-contenv sh
 
 if [ "$QUEUE_ENABLED" = "true" ]; then
-    echo "Queue is enabled"
+    echo "✅ Queue is enabled"
     php "$APP_BASE_DIR/artisan" queue:work \
         --max-jobs $QUEUE_MAX_JOBS \
         --sleep $QUEUE_SLEEP \
@@ -10,7 +10,7 @@ if [ "$QUEUE_ENABLED" = "true" ]; then
         --tries $QUEUE_TRIES \
         --force
 else
-    echo "Queue is disabled"
+    echo "❌ Queue is disabled"
     s6-svc -Od .
     exit 0
 fi
