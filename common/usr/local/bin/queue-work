@@ -1,0 +1,9 @@
+#!/bin/sh
+
+artisan queue:work \
+    --max-jobs $QUEUE_MAX_JOBS \
+    --sleep $QUEUE_SLEEP \
+    --rest $QUEUE_REST \
+    --timeout $QUEUE_TIMEOUT \
+    --tries $QUEUE_TRIES \
+    --force
