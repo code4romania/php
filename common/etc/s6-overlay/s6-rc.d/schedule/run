@@ -1,11 +1,8 @@
 #!/command/with-contenv sh
 
 if [ "$SCHEDULE_ENABLED" = "true" ]; then
-    # Changing to the base directory prevents
-    # the "Could not open input file: artisan" error
-    cd $APP_BASE_DIR
     echo "✅ Schedule is enabled"
-    php artisan schedule:work --whisper
+    artisan schedule:work --whisper
 else
     echo "❌ Schedule is disabled"
     s6-svc -Od .
