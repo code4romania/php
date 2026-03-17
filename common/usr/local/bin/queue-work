@@ -1,5 +1,17 @@
 #!/bin/sh
 
+echo '
+-------------------------------------
+🚀 Laravel queue worker
+-------------------------------------
+🛠️ Configuration
+• MAX_JOBS:      '"$QUEUE_MAX_JOBS"'
+• SLEEP:         '"$QUEUE_SLEEP"'
+• REST:          '"$QUEUE_REST"'
+• TIMEOUT:       '"$QUEUE_TIMEOUT"'
+• TRIES:         '"$QUEUE_TRIES"'
+'
+
 artisan queue:work \
     --max-jobs $QUEUE_MAX_JOBS \
     --sleep $QUEUE_SLEEP \
