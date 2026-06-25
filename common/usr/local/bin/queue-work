@@ -5,6 +5,7 @@ echo '
 🚀 Laravel queue worker
 -------------------------------------
 🛠️ Configuration
+• QUEUE:         '"$QUEUE_NAME"'
 • MAX_JOBS:      '"$QUEUE_MAX_JOBS"'
 • SLEEP:         '"$QUEUE_SLEEP"'
 • REST:          '"$QUEUE_REST"'
@@ -13,6 +14,7 @@ echo '
 '
 
 artisan queue:work \
+    --queue $QUEUE_NAME \
     --max-jobs $QUEUE_MAX_JOBS \
     --sleep $QUEUE_SLEEP \
     --rest $QUEUE_REST \
