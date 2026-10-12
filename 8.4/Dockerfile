@@ -1,4 +1,4 @@
-FROM serversideup/php:8.4-fpm-nginx-alpine
+FROM serversideup/php:8.4-fpm-nginx-alpine-v5.0.0
 
 COPY --chmod=755 common/etc/entrypoint.d /etc/entrypoint.d
 COPY --chmod=755 common/etc/s6-overlay /etc/s6-overlay
@@ -12,9 +12,7 @@ ENV PHP_UPLOAD_MAX_FILE_SIZE=${PHP_POST_MAX_SIZE}
 
 # OPcache settings
 ENV PHP_OPCACHE_ENABLE=1
-ENV PHP_OPCACHE_INTERNED_STRINGS_BUFFER=8
-ENV PHP_OPCACHE_MEMORY_CONSUMPTION=128
-ENV PHP_OPCACHE_REVALIDATE_FREQ=2
+ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS=0
 
 # PHP-FPM settings
 ENV PHP_FPM_PM_CONTROL=ondemand
