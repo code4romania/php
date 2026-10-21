@@ -1,4 +1,4 @@
-FROM serversideup/php:8.4-fpm-nginx-alpine-v5.0.0
+FROM serversideup/php:8.4-fpm-nginx-alpine
 
 COPY --chmod=755 common/etc/entrypoint.d /etc/entrypoint.d
 COPY --chmod=755 common/etc/s6-overlay /etc/s6-overlay
