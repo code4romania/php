@@ -3,7 +3,7 @@ name: Build and push image to registry
 on:
   push:
   schedule:
-    - cron: "0 10 * * 1"
+    - cron: "0 10 * * *"
   workflow_dispatch:
 
 jobs:
